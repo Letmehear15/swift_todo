@@ -7,14 +7,9 @@
 
 import SwiftUI
 
-struct BottomSheetView: View {
-    
-    @EnvironmentObject var viewModel: TaskViewModel
-
-    
+struct BottomSheetView: View {    
     var body: some View {
-//        TextField("Task text", text: $taskToChange.text)
-        Text("aa")
+        TaskUpdateView()
     }
 }
 

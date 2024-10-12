@@ -22,9 +22,9 @@ struct TaskListView: View {
                     ForEach(Array(tasksViewModel.tasks.enumerated()), id: \.element.id) {index, task in
                         TaskRowView(task: task, action: {
                             tasksViewModel.toggleTask(at: index)
-                            tasksViewModel.selectTask(at: index)
                         })
                         .onTapGesture {
+                            tasksViewModel.selectTask(at: index)
                             isEditDrawerOpen.toggle()
                         }
                     }

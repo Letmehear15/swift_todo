@@ -17,24 +17,11 @@ struct CreateTaskView: View {
             LinearGradient(colors: [.CustomBackground1, .CustomBackground2], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
             
             VStack{
-                TextField("Enter your new task", text: $viewModel.taskText)
-                    .font(.headline)
-                    .padding()
-                    .background(Color.CustomPrimary.opacity(0.1))
-                    .cornerRadius(10)
-                    .padding(.bottom, 8)
-                
-                Button(action: {
+                CustomTextField(placeholder: "Enter your new task")
+                                
+                CustomButton(bauttonText: "Add task"){
                     viewModel.addNewTask(newTask: viewModel.taskText)
                     dismiss()
-                }) {
-                    Text("Add task")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .font(.headline)
-                        .foregroundStyle(Color.CustomBackground1)
-                        .background(.accent)
-                        .cornerRadius(10)
                 }
                 
                 Spacer()
@@ -43,6 +30,9 @@ struct CreateTaskView: View {
             .navigationTitle("Add Task")
             .toolbarTitleDisplayMode(.inline)
             .padding()
+            .onAppear {
+                viewModel.taskText = ""
+            }
         }
     }
 }
